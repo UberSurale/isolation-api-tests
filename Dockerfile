@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ENV PYTHONPATH="/app:/app/protos/gen"
+ENV PYTHONPATH="./:./protos/gen"
