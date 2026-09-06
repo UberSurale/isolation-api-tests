@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "id": "22222222-aaaa-4bbb-8ccc-222222222222",
+      "pin": "1234",
+      "cvv": "456",
+      "type": "VIRTUAL",
+      "status": "ACTIVE",
+      "accountId": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+      "cardNumber": "4111111122222222",
+      "cardHolder": "MATRENA PETROVA",
+      "expiryDate": "2027-12-30",
+      "paymentSystem": "VISA"
+    },
+    {
+      "id": "44444444-dddd-4eee-8fff-444444444444",
+      "pin": "9876",
+      "cvv": "789",
+      "type": "PHYSICAL",
+      "status": "ACTIVE",
+      "accountId": "aaaaaabb-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+      "cardNumber": "5500000000000014",
+      "cardHolder": "MATRENA PETROVA",
+      "expiryDate": "2028-05-30",
+      "paymentSystem": "MASTERCARD"
+    }
+  ]
+}

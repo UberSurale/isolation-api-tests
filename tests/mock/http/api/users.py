@@ -17,12 +17,12 @@ loader = MockLoader(
     logger=get_test_logger("USERS_SERVICE_MOCK_LOADER")
 )
 
-user_mock_router = APIRouter(
+users_mock_router = APIRouter(
     prefix=APITestRoutes.USERS,
     tags=[APITestRoutes.USERS]
 )
 
-@user_mock_router.get("/{user_id}", response_model=GetUserResponseTestSchema)
+@users_mock_router.get("/{user_id}", response_model=GetUserResponseTestSchema)
 async def get_user_view(
     user_id: uuid.UUID,
     scenario: Scenario = Depends(get_scenario_http),

@@ -6,7 +6,7 @@ from fastapi.params import Depends
 
 from tests.context.scenario import Scenario
 from tests.mock.http.tools import get_scenario_http
-from tests.schemas.accounts import GetAccountResponseTestSchema
+from tests.schemas.accounts import GetAccountResponseTestSchema, GetAccountsResponseTestSchema
 from tests.tools.logger import get_test_logger
 from tests.tools.mock import MockLoader
 from tests.tools.routes import APITestRoutes
@@ -32,11 +32,11 @@ async def get_account_view(
         model = GetAccountResponseTestSchema
     )
 
-@accounts_mock_router.get("", response_model=GetAccountResponseTestSchema)
+@accounts_mock_router.get("", response_model=GetAccountsResponseTestSchema)
 async def get_accounts_view(
     scenario: Scenario = Depends(get_scenario_http),
 ):
     return await loader.load_http(
         file=f"get_accounts/{scenario}.json",
-        model=GetAccountResponseTestSchema
+        model=GetAccountsResponseTestSchema
     )
