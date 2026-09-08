@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "id": "7f3a91c2-5d84-4e17-9b63-1a8c52d740ef",
+      "pin": "4821",
+      "cvv": "315",
+      "type": "CARD_TYPE_VIRTUAL",
+      "status": "CARD_STATUS_ACTIVE",
+      "accountId": "c4e82a17-9f35-4b61-a728-53d91e6f8042",
+      "cardNumber": "4000000000000001",
+      "cardHolder": "ALEXEY SMIRNOV",
+      "expiryDate": "2029-03-31",
+      "paymentSystem": "CARD_PAYMENT_SYSTEM_VISA"
+    },
+    {
+      "id": "b62e40d9-1837-4ac5-8f21-76d3c950a4be",
+      "pin": "7364",
+      "cvv": "821",
+      "type": "CARD_TYPE_PHYSICAL",
+      "status": "CARD_STATUS_ACTIVE",
+      "accountId": "c4e82a17-9f35-4b61-a728-53d91e6f8042",
+      "cardNumber": "5555555555554444",
+      "cardHolder": "ALEXEY SMIRNOV",
+      "expiryDate": "2030-08-31",
+      "paymentSystem": "CARD_PAYMENT_SYSTEM_MASTERCARD"
+    },
+    {
+      "id": "e91c73a5-2b46-4d80-a1f9-6385be0274cd",
+      "pin": "1593",
+      "cvv": "604",
+      "type": "CARD_TYPE_VIRTUAL",
+      "status": "CARD_STATUS_BLOCKED",
+      "accountId": "8a17d3c9-42e6-4f50-b981-27ac6d5e1038",
+      "cardNumber": "4000000000000027",
+      "cardHolder": "MARIA IVANOVA",
+      "expiryDate": "2028-11-30",
+      "paymentSystem": "CARD_PAYMENT_SYSTEM_VISA"
+    },
+    {
+      "id": "4c8b15e7-9032-46ad-b7f1-2d694a83c5e0",
+      "pin": "9057",
+      "cvv": "472",
+      "type": "CARD_TYPE_PHYSICAL",
+      "status": "CARD_STATUS_ACTIVE",
+      "accountId": "8a17d3c9-42e6-4f50-b981-27ac6d5e1038",
+      "cardNumber": "5555555555555557",
+      "cardHolder": "MARIA IVANOVA",
+      "expiryDate": "2029-05-31",
+      "paymentSystem": "CARD_PAYMENT_SYSTEM_MASTERCARD"
+    }
+  ]
+}

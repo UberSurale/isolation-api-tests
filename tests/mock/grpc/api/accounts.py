@@ -21,7 +21,7 @@ class AccountsMockService(AccountsServiceServicer):
 
         return await loader.load_grpc(
             file=f"GetAccount/{scenario}.json",
-            model=GetAccountsResponse
+            model=GetAccountResponse
         )
 
     async def GetAccounts(self, request: GetAccountsRequest, context: ServicerContext) -> GetAccountsResponse:

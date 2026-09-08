@@ -1,0 +1,9 @@
+{
+  "account": {
+    "id": "6e4b92a1-73dc-4f08-b561-29c7a845e013",
+    "type": "ACCOUNT_TYPE_CREDIT_CARD",
+    "status": "ACCOUNT_STATUS_ACTIVE",
+    "userId": "a72f35c8-614e-4b09-9d63-5802fa71bc46",
+    "balance": -8745.20
+  }
+}
