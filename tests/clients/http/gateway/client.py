@@ -33,7 +33,7 @@ class GatewayHTTPTestClient(HTTPTestClient):
         context: RequestContext,
     ) -> Response:
         return self.get(
-            f"{APITestRoutes.GATEWAY}/account-details/${account_id}",
+            f"{APITestRoutes.GATEWAY}/account-details/{account_id}",
             context=context
         )
 
