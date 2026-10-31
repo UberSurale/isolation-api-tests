@@ -28,6 +28,8 @@ class TestGatewayHTTP:
             response
         )
 
+    @allure.story(AllureStory.GET_ACCOUNT_DETAILS)
+    @allure.title("[HTTP] Get account details. User with active debit card account")
     def test_get_account_details_user_with_active_debit_card_account(
             self, 
             gateway_http_test_client: GatewayHTTPTestClient
