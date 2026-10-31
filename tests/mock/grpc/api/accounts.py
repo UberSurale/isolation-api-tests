@@ -6,7 +6,7 @@ from contracts.services.accounts.accounts_service_pb2_grpc import AccountsServic
 from contracts.services.accounts.rpc_get_account_pb2 import GetAccountRequest, GetAccountResponse
 from contracts.services.accounts.rpc_get_accounts_pb2 import GetAccountsRequest, GetAccountsResponse
 from tests.mock.grpc.tools import get_scenario_grpc
-from tests.tools.date import MockLoader
+from tests.tools.mock import MockLoader
 from tests.tools.logger import get_test_logger
 
 

@@ -5,7 +5,7 @@ from grpc import ServicerContext
 from contracts.services.users.rpc_get_user_pb2 import GetUserRequest, GetUserResponse
 from contracts.services.users.users_service_pb2_grpc import UsersServiceServicer
 from tests.mock.grpc.tools import get_scenario_grpc
-from tests.tools.date import MockLoader
+from tests.tools.mock import MockLoader
 from tests.tools.logger import get_test_logger
 
 
