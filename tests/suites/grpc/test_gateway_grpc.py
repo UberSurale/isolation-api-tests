@@ -2,9 +2,9 @@ import allure
 import pytest
 
 from tests.assertions.grpc.gateway import (
+    assert_get_account_details_response_user_with_active_debit_card_account,
     assert_get_user_details_response_user_with_active_credit_card_account,
 )
-from tests.assertions.http.gateway import assert_get_account_details_response_user_with_active_debit_card_account
 from tests.clients.grpc.gateway.client import GatewayGRPCTestClient
 from tests.context.base import RequestContext
 from tests.context.scenario import Scenario
