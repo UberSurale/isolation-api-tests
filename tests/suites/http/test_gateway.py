@@ -1,8 +1,8 @@
 import allure
 import pytest
 
-from libs.context.base import RequestContext
-from tests.assertions.grpc.gateway import assert_get_user_details_response_user_with_active_credit_card_account
+from tests.context.base import RequestContext
+from tests.assertions.http.gateway import assert_get_user_details_response_user_with_active_credit_card_account
 from tests.clients.http.gateway.client import GatewayHTTPTestClient
 from tests.context.scenario import Scenario
 from tests.tools.allure import AllureFeature, AllureStory, AllureTag
