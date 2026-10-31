@@ -6,7 +6,7 @@ from contracts.services.operations.operations_service_pb2_grpc import Operations
 from contracts.services.operations.rpc_get_operation_pb2 import GetOperationRequest, GetOperationResponse
 from contracts.services.operations.rpc_get_operations_pb2 import GetOperationsRequest, GetOperationsResponse
 from tests.clients.grpc.client import GRPCTestClient, build_grpc_test_channel
-from tests.tools import allure
+import allure
 from tests.tools.logger import get_test_logger
 
 from tests.config import test_settings

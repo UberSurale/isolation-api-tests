@@ -5,7 +5,7 @@ from httpx import Response
 from tests.clients.http.client import HTTPTestClient, build_http_test_client
 from tests.context.base import RequestContext
 from tests.schemas.gateway import GetAccountDetailsResponseTestSchema, GetUserDetailsResponseTestSchema
-from tests.tools import allure
+import allure
 from tests.tools.logger import get_test_logger
 from tests.tools.routes import APITestRoutes
 from tests.tools.fakers import fake

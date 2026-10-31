@@ -4,7 +4,7 @@ from httpx import Response, QueryParams
 
 from tests.clients.http.client import HTTPTestClient, build_http_test_client
 from tests.schemas.operations import GetOperationResponseTestSchema, GetOperationsQueryTestSchema, GetOperationsResponseTestSchema
-from tests.tools import allure
+import allure
 from tests.tools.logger import get_test_logger
 from tests.tools.routes import APITestRoutes
 

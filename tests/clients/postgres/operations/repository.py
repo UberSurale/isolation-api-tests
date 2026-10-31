@@ -1,6 +1,6 @@
 from tests.clients.postgres.operations.model import OperationsTestModel
 from tests.clients.postgres.repository import PostgresTestRepository
-from tests.tools import allure
+import allure
 from tests.tools.fakers import fake
 from tests.types.operations import OperationTestStatus, OperationTestType
 from tests.clients.postgres.operations.session import operations_test_session_factory

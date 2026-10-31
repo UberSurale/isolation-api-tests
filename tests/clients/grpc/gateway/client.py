@@ -5,7 +5,7 @@ from contracts.services.gateway.rpc_get_account_details_pb2 import GetAccountDet
 from contracts.services.gateway.rpc_get_user_details_pb2 import GetUserDetailsRequest, GetUserDetailsResponse
 from tests.clients.grpc.client import GRPCTestClient, build_grpc_test_channel
 from tests.context.base import RequestContext, build_grpc_test_metadata
-from tests.tools import allure
+import allure
 from tests.tools.fakers import fake
 from tests.tools.logger import get_test_logger
 

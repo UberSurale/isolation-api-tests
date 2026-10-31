@@ -2,7 +2,7 @@ import time
 
 from tests.clients.kafka.producer import KafkaProducerTestClient
 from tests.schemas.operations import OperationEventTestSchema
-from tests.tools import allure
+import allure
 
 from tests.config import test_settings
 from tests.tools.logger import get_test_logger

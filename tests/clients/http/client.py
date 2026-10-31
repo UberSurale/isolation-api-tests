@@ -4,7 +4,7 @@ from httpx import Client, Headers, QueryParams, Response
 
 from tests.clients.http.logger_event_hook import HTTPLoggerEventHook
 from tests.context.base import RequestContext, build_http_test_headers
-from tests.tools import allure
+import allure
 from tests.tools.config.http import HTTPClientTestConfig
 
 
@@ -33,17 +33,17 @@ class HTTPTestClient:
         )
 
 
-    def build_http_test_clint(
-        logger: Logger,
-        config: HTTPClientTestConfig
-    ):
-        logger_event_hook = HTTPLoggerEventHook(logger=logger)
+def build_http_test_client(
+    logger: Logger,
+    config: HTTPClientTestConfig
+) -> Client:
+    logger_event_hook = HTTPLoggerEventHook(logger=logger)
 
-        return Client(
-            timeout=config.timeout,
-            base_url=str(config.url),
-            event_hooks={
-                "request": [logger_event_hook.request],
-                "response": [logger_event_hook.response],
-            }
-        )
+    return Client(
+        timeout=config.timeout,
+        base_url=str(config.url),
+        event_hooks={
+            "request": [logger_event_hook.request],
+            "response": [logger_event_hook.response],
+        }
+    )

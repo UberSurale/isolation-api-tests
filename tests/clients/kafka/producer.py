@@ -1,6 +1,6 @@
 import logging
 
-from tests.tools import allure
+import allure
 from tests.tools.config.kafka import KafkaClientTestConfig
 from confluent_kafka import Producer
 
