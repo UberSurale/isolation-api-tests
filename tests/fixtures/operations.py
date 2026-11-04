@@ -3,14 +3,14 @@ import pytest
 from tests.clients.grpc.operations.client import OperationsGRPCTestClient, build_operations_grpc_test_clint
 from tests.clients.http.operations.client import (
     build_operations_http_test_client,
-    OperationsHTTPTestClient,
+    OperationsHTTPServiceTestClient,
 )
 from tests.clients.kafka.operations.producer import OperationsKafkaProducerTestClient, build_operations_kafka_producer_test_client
 from tests.clients.postgres.operations.repository import OperationsPostgresTestRepository, get_operation_postgres_test_repository
 
 
 @pytest.fixture
-def operations_http_test_client() -> OperationsHTTPTestClient:
+def operations_http_test_client() -> OperationsHTTPServiceTestClient:
     return build_operations_http_test_client()
 
 

@@ -1,6 +1,7 @@
+from datetime import datetime
 import uuid
 
-from sqlalchemy import UUID, Column, String
+from sqlalchemy import UUID, Column, DateTime, Float, String
 from sqlalchemy.orm import Mapped
 
 from tests.clients.postgres.base import BaseTestModel

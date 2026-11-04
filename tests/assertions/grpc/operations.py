@@ -4,9 +4,10 @@ from contracts.services.operations.operation_pb2 import Operation, OperationType
 from contracts.services.operations.rpc_get_operations_pb2 import GetOperationsResponse
 from tests.assertions.base import assert_equal
 from tests.clients.postgres.operations.model import OperationsTestModel
-from tests.schema.operations import OperationEventTestSchema, OperationTestType, OperationTestStatus
+from tests.schemas.operations import OperationEventTestSchema
 from tests.tools.date import to_proto_test_datetime
 from tests.tools.logger import get_test_logger
+from tests.types.operations import OperationTestStatus, OperationTestType
 
 logger = get_test_logger("OPERATIONS_ASSERTIONS")
 

@@ -23,6 +23,19 @@ class PostgresTestRepository:
             session.close()
 
 
+    @contextmanager
+    def session_write(self) -> Generator[Session, None, None]:
+        session = self.session_factory()
+        try:
+            yield session
+            session.commit()
+        except Exception:
+            session.rollback()
+            raise
+        finally:
+            session.close()
+
+
     def create(self, instance: ModelT) -> ModelT:
         with self.session_write() as session:
             session.add(instance)

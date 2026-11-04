@@ -17,11 +17,13 @@ class OperationsKafkaProducerTestClient(KafkaProducerTestClient):
         event: OperationEventTestSchema,
     ) -> OperationEventTestSchema:
         self.produce(
-            topic="operations-service.operation-even.inbox",
+            topic="operations-service.operation-event.inbox",
             value=event.model_dump_json()
         )
         self.flush_all()
         time.sleep(test_settings.operations_processing_wait_timeout)
+
+        return event
 
 
     @allure.step("Produce in progress purchase operation event")
