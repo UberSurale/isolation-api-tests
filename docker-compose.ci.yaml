@@ -7,8 +7,35 @@ x-base-service: &base-service
   volumes:
     - .:/app
   working_dir: /app
+  # В .env нет ничего приватного: адреса сервисов внутри compose-сети и
+  # тестовые учётные данные БД, которые и так лежат в migrations/postgres.
+  # Поэтому в CI .env не нужен, настройки заданы переменными окружения.
   environment:
-    ENV_FILE: .env
+    USERS_HTTP_CLIENT.HOST: http://http-mock:8003
+    USERS_GRPC_CLIENT.PORT: 9003
+    USERS_GRPC_CLIENT.HOST: grpc-mock
+    CARDS_HTTP_CLIENT.HOST: http://http-mock:8003
+    CARDS_GRPC_CLIENT.PORT: 9003
+    CARDS_GRPC_CLIENT.HOST: grpc-mock
+    ACCOUNTS_HTTP_CLIENT.HOST: http://http-mock:8003
+    ACCOUNTS_GRPC_CLIENT.PORT: 9003
+    ACCOUNTS_GRPC_CLIENT.HOST: grpc-mock
+    GATEWAY_HTTP_SERVER.PORT: 8001
+    GATEWAY_HTTP_SERVER.HOST: 0.0.0.0
+    GATEWAY_GRPC_SERVER.PORT: 9001
+    GATEWAY_GRPC_SERVER.HOST: 0.0.0.0
+    OPERATIONS_HTTP_SERVER.PORT: 8002
+    OPERATIONS_HTTP_SERVER.HOST: 0.0.0.0
+    OPERATIONS_GRPC_SERVER.PORT: 9002
+    OPERATIONS_GRPC_SERVER.HOST: 0.0.0.0
+    OPERATIONS_KAFKA_CLIENT.PORT: 9092
+    OPERATIONS_KAFKA_CLIENT.HOST: kafka
+    OPERATIONS_POSTGRES_DATABASE.PORT: 5432
+    OPERATIONS_POSTGRES_DATABASE.HOST: postgres
+    OPERATIONS_POSTGRES_DATABASE.DRIVER: postgresql+asyncpg
+    OPERATIONS_POSTGRES_DATABASE.DATABASE: operations_service_db
+    OPERATIONS_POSTGRES_DATABASE.USERNAME: operations_service_user
+    OPERATIONS_POSTGRES_DATABASE.PASSWORD: operations_service_password
 
 x-python-service: &python-service
   <<: *base-service
