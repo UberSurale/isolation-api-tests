@@ -57,6 +57,10 @@ jobs:
           OPERATIONS_POSTGRES_CLIENT.DSN: postgresql://operations_service_user:operations_service_password@localhost:5432/operations_service_db
           OPERATIONS_POSTGRES_CLIENT.ECHO: true
 
+      - name: Show service logs
+        if: failure()
+        run: docker compose -f docker-compose.ci.yaml logs --no-color
+
       - name: Stop test services
         if: always()
         run: docker compose -f docker-compose.ci.yaml down -v

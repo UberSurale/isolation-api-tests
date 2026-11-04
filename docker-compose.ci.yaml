@@ -1,19 +1,9 @@
 version: '3.9'
 
-x-base-service: &base-service
-  build:
-    context: .
-    dockerfile: Dockerfile
-  volumes:
-    - .:/app
-  working_dir: /app
-  # В .env нет ничего приватного: адреса сервисов внутри compose-сети и
-  # тестовые учётные данные БД, которые и так лежат в migrations/postgres.
-  # Поэтому в CI .env не нужен, настройки заданы переменными окружения.
-  environment:
-    # c-ares (DNS-резолвер gRPC по умолчанию) не видит встроенный DNS Docker,
-    # поэтому имена контейнеров (grpc-mock) резолвим системным резолвером.
-    GRPC_DNS_RESOLVER: native
+# В .env нет ничего приватного: адреса сервисов внутри compose-сети и
+# тестовые учётные данные БД, которые и так лежат в migrations/postgres.
+# Поэтому в CI .env не нужен, настройки заданы переменными окружения.
+x-service-environment: &service-environment
     USERS_HTTP_CLIENT.HOST: http://http-mock:8003
     USERS_GRPC_CLIENT.PORT: 9003
     USERS_GRPC_CLIENT.HOST: grpc-mock
@@ -39,6 +29,15 @@ x-base-service: &base-service
     OPERATIONS_POSTGRES_DATABASE.DATABASE: operations_service_db
     OPERATIONS_POSTGRES_DATABASE.USERNAME: operations_service_user
     OPERATIONS_POSTGRES_DATABASE.PASSWORD: operations_service_password
+
+x-base-service: &base-service
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - .:/app
+  working_dir: /app
+  environment: *service-environment
 
 x-python-service: &python-service
   <<: *base-service
@@ -112,12 +111,48 @@ services:
     <<: *python-service
     ports: [ "8003:8003" ]
     command: "tests.mock.http.server"
+    # Моки импортируют tests.config, поэтому им нужны и настройки тестов.
+    # Значения, которые моки не используют, заглушки.
+    environment:
+      <<: *service-environment
+      GATEWAY_HTTP_CLIENT.URL: http://127.0.0.1:8001
+      GATEWAY_GRPC_CLIENT.PORT: 9001
+      GATEWAY_GRPC_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_HTTP_CLIENT.URL: http://127.0.0.1:8002
+      OPERATIONS_GRPC_CLIENT.PORT: 9002
+      OPERATIONS_GRPC_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_KAFKA_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_PROCESSING_WAIT_TIMEOUT: 0.5
+      MOCK_HTTP_SERVER.PORT: 8003
+      MOCK_HTTP_SERVER.ADDRESS: 0.0.0.0
+      MOCK_GRPC_SERVER.PORT: 9003
+      MOCK_GRPC_SERVER.ADDRESS: 0.0.0.0
+      OPERATIONS_POSTGRES_CLIENT.DSN: postgresql://operations_service_user:operations_service_password@postgres:5432/operations_service_db
+      OPERATIONS_POSTGRES_CLIENT.ECHO: false
     container_name: "http-mock"
 
   grpc-mock:
     <<: *python-service
     ports: [ "9003:9003" ]
     command: "tests.mock.grpc.server"
+    # Моки импортируют tests.config, поэтому им нужны и настройки тестов.
+    # Значения, которые моки не используют, заглушки.
+    environment:
+      <<: *service-environment
+      GATEWAY_HTTP_CLIENT.URL: http://127.0.0.1:8001
+      GATEWAY_GRPC_CLIENT.PORT: 9001
+      GATEWAY_GRPC_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_HTTP_CLIENT.URL: http://127.0.0.1:8002
+      OPERATIONS_GRPC_CLIENT.PORT: 9002
+      OPERATIONS_GRPC_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_KAFKA_CLIENT.ADDRESS: 127.0.0.1
+      OPERATIONS_PROCESSING_WAIT_TIMEOUT: 0.5
+      MOCK_HTTP_SERVER.PORT: 8003
+      MOCK_HTTP_SERVER.ADDRESS: 0.0.0.0
+      MOCK_GRPC_SERVER.PORT: 9003
+      MOCK_GRPC_SERVER.ADDRESS: 0.0.0.0
+      OPERATIONS_POSTGRES_CLIENT.DSN: postgresql://operations_service_user:operations_service_password@postgres:5432/operations_service_db
+      OPERATIONS_POSTGRES_CLIENT.ECHO: false
     container_name: "grpc-mock"
 
   # gateway-services
