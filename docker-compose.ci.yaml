@@ -11,6 +11,9 @@ x-base-service: &base-service
   # тестовые учётные данные БД, которые и так лежат в migrations/postgres.
   # Поэтому в CI .env не нужен, настройки заданы переменными окружения.
   environment:
+    # c-ares (DNS-резолвер gRPC по умолчанию) не видит встроенный DNS Docker,
+    # поэтому имена контейнеров (grpc-mock) резолвим системным резолвером.
+    GRPC_DNS_RESOLVER: native
     USERS_HTTP_CLIENT.HOST: http://http-mock:8003
     USERS_GRPC_CLIENT.PORT: 9003
     USERS_GRPC_CLIENT.HOST: grpc-mock
